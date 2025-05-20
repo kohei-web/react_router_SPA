@@ -82,21 +82,14 @@ export const useTodo = () => {
         setTodos(newTodos);
     };
 
-    // 状態管理を辞書型に定義
-    const states = {
+    return {
         showTodoList,
         originalText,
         searchText,
-    };
-
-    // イベントハンドラを辞書型に定義
-    const actions = {
         handleSetOriginalText,
         createTodo,
         handleSetSearchText,
         handleTodoDelete,
-    };
-
-    return [ states, actions ]
+    }
 
 }

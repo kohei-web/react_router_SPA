@@ -6,25 +6,21 @@
  *
  */
 
-import { useTodo } from "../../hooks/useTodo";
+import { useTodoContext } from "../../contexts/TodoContext";
 import { TodoList } from "../../components/organisms/TodoList";
 import { AddTodo } from "../../components/organisms/AddTodo";
 import { SearchTodo } from "../../components/organisms/SearchTodo";
 
 export const TodoTemplate = () => {
-    const [
-        {
-            showTodoList,
-            originalText,
-            searchText
-        },
-        {
-            handleSetOriginalText,
-            createTodo,
-            handleSetSearchText,
-            handleTodoDelete
-        }
-    ] = useTodo();
+    const {
+        showTodoList,
+        originalText,
+        searchText,
+        handleSetOriginalText,
+        createTodo,
+        handleSetSearchText,
+        handleTodoDelete
+    } = useTodoContext();
 
     return (
         <div>
