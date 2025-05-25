@@ -1,11 +1,16 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import './index.css'
 import './App.css'
-import { TodoPage } from './pages/todo'
+import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routers";
+import { TodoProvider } from "./contexts/TodoContext";
 
-createRoot(document.getElementById('root')).render(
+const route = ReactDOM.createRoot(document.getElementById('root'));
+route.render(
   <StrictMode>
-    <TodoPage />
+    <TodoProvider>
+      <RouterProvider router={router} />
+    </TodoProvider>
   </StrictMode>
-)
+);

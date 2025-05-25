@@ -8,28 +8,25 @@
 
 import { useTodoContext } from "../../contexts/TodoContext";
 import { TodoList } from "../../components/organisms/TodoList";
-import { AddTodo } from "../../components/organisms/AddTodo";
 import { SearchTodo } from "../../components/organisms/SearchTodo";
+import styles from "./style.module.css";
+import { Link } from "react-router-dom";
 
 export const TodoTemplate = () => {
     const {
         showTodoList,
-        originalText,
         searchText,
-        handleSetOriginalText,
-        createTodo,
         handleSetSearchText,
         handleTodoDelete
     } = useTodoContext();
 
     return (
         <div>
-            {/* todoListの追加 */}
-            <AddTodo
-                inputValue={originalText}
-                onChangeText={handleSetOriginalText}
-                handleKeyUp={createTodo}
-            />
+            <div className={styles.link}>
+                <Link to={`/`} className={styles.link_item}>Top</Link>
+                <Link to={`/create`} className={styles.link_item}>Create</Link>
+            </div>
+            <h1>Todo Page</h1>
             {/* todoListの検索 */}
             <SearchTodo
                 searchText={searchText}
