@@ -9,7 +9,7 @@
 import { useTodoContext } from "../../contexts/TodoContext";
 import { TodoList } from "../../components/organisms/TodoList";
 import { SearchTodo } from "../../components/organisms/SearchTodo";
-import styles from "./style.module.css";
+import styles from "../../assets/commons/style.module.css";
 import { Link } from "react-router-dom";
 
 export const TodoTemplate = () => {

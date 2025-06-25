@@ -2,7 +2,7 @@ import { InputForm } from "../../atoms/InputForm";
 import styles from "../../../assets/commons/style.module.css";
 
 export const AddTodo = (props) => {
-    const { inputValue, onChangeText, handleKeyUp } = props;
+    const { inputValue, onChangeText, handleKeyUp, inputValueContent, onChangeTextContent } = props;
 
     return (
         <div>
@@ -10,7 +10,13 @@ export const AddTodo = (props) => {
             <InputForm
                 inputValue={inputValue}
                 onChangeText={onChangeText}
-                placeholder="Todoを追加"
+                placeholder="Todo_titleを追加"
+                handleKeyUp={handleKeyUp}
+            />
+            <InputForm
+                inputValue={inputValueContent}
+                onChangeText={onChangeTextContent}
+                placeholder="Todo_contentを追加"
                 handleKeyUp={handleKeyUp}
             />
         </div>

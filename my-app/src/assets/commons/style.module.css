@@ -1,3 +1,11 @@
 .commonsTodo {
     font-size: 12px;
 }
+
+.link {
+    display: flex;
+}
+
+.link_item:first-child {
+    margin-right: 200px;
+}

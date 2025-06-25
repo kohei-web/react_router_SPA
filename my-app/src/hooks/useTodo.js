@@ -20,8 +20,10 @@ import { initialTodoList, todoLength } from "../constants/data";
 export const useTodo = () => {
     // 表示todoListの状態管理
     const [ todos, setTodos ] = useState(initialTodoList);
-    // todo追加テキストの状態管理 最初は空文字
+    // todo_titleの追加テキストの状態管理 最初は空文字
     const [ originalText, setOriginalText ] = useState("");
+    // todo_contentの追加テキストの状態管理 最初は空文字
+    const [ originalTextContent, setOriginalTextContent ] = useState("");
     // idの状態管理
     const [ todoIdLength, setTodoIdLength ] = useState(todoLength);
     // 検索テキストの状態管理
@@ -32,6 +34,9 @@ export const useTodo = () => {
         setTodos([...todos, todo]);
     };
 
+    // createTodo内部にaddTodoを入れ込んでuseCallBackで再レンダリングを防止
+    // titleとcontentはそれぞれのページから引数で受け取るようにする
+    // titleとcontentの状態管理もAddTodoPagesの方で持たせる
     // 新しいtodoListの作成
     const createTodo = (e) => {
         // Enterがクリックかつ入力欄がからではない時にtodoを追加するようにする
@@ -42,7 +47,8 @@ export const useTodo = () => {
             // 追加するtodoの作成
             const todo = {
                 id: originalId,
-                title: originalText
+                title: originalText,
+                content: originalTextContent,
             };
 
             // todoの追加
@@ -53,11 +59,14 @@ export const useTodo = () => {
 
             // todo追加後に入力欄を空にする
             setOriginalText("");
+            setOriginalTextContent("");
         }
     };
 
-    // 入力されたtodo追加テキストの状態管理ハンドラ
+    // 入力されたtodo_title追加テキストの状態管理ハンドラ
     const handleSetOriginalText = (e) => setOriginalText(e.target.value);
+    // 入力されたtodo_content追加テキストの状態管理ハンドラ
+    const handleSetOriginalTextContent = (e) => setOriginalTextContent(e.target.value);
     // 入力された検索テキストの状態管理ハンドラ
     const handleSetSearchText = (e) => setSearchText(e.target.value);
 
@@ -85,8 +94,10 @@ export const useTodo = () => {
     return {
         showTodoList,
         originalText,
+        originalTextContent,
         searchText,
         handleSetOriginalText,
+        handleSetOriginalTextContent,
         createTodo,
         handleSetSearchText,
         handleTodoDelete,

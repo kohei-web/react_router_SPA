@@ -8,8 +8,10 @@ export const TodoProvider = ({ children }) => {
     const {
         showTodoList,
         originalText,
+        originalTextContent,
         searchText,
         handleSetOriginalText,
+        handleSetOriginalTextContent,
         createTodo,
         handleSetSearchText,
         handleTodoDelete,
@@ -21,8 +23,10 @@ export const TodoProvider = ({ children }) => {
                 {
                     showTodoList,
                     originalText,
+                    originalTextContent,
                     searchText,
                     handleSetOriginalText,
+                    handleSetOriginalTextContent,
                     createTodo,
                     handleSetSearchText,
                     handleTodoDelete,
