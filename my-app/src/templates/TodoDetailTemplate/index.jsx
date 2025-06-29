@@ -16,7 +16,9 @@ export const TodoDetailTemplate = () => {
         <div>
             {/* TodoListの追加 */}
             <div className={styles.link}>
-                <Link to={`/`} className={styles.link_item}>Top</Link>
+                <Link to={`/`} className={styles.link_item}>
+                    Top
+                </Link>
             </div>
             <h1>Detail Todo</h1>
             <AddTodo

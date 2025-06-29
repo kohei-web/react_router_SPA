@@ -7,7 +7,8 @@
 
 
 import { InputForm } from "../../atoms/InputForm";
-import styles from "../../../assets/commons/style.module.css";
+import commonStyles from "../../../assets/commons/style.module.css";
+import styles from "./styles.module.css";
 
 /**
  *
@@ -21,12 +22,14 @@ export const SearchTodo = (props) => {
 
     return(
         <>
-            <h2 className={styles.commonsTodo}>{"todo検索"}</h2>
-            <InputForm
-                inputValue={searchText}
-                placeholder={"todoを検索"}
-                onChangeText={handleChangeSearchText}
-            />
+            <h2 className={commonStyles.commonsTodo}>{"todo検索"}</h2>
+            <div className={styles.inputForm}>
+                <InputForm
+                    inputValue={searchText}
+                    placeholder={"todoを検索"}
+                    onChangeText={handleChangeSearchText}
+                />
+            </div>
         </>
     )
 };

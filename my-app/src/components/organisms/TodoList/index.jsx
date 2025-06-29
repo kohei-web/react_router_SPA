@@ -6,6 +6,12 @@
  */
 
 import styles from "./TodoList.module.css";
+import {
+    faTrashAlt,
+    faFile,
+    faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /**
  *
@@ -23,12 +29,33 @@ export const TodoList = (props) => {
                 return (
                     <li className={styles.list} key={todo.id}>
                         <span>{todo.title}</span>
-                        <button
-                            className={styles.deleteButton}
-                            onClick={() => handleTodoDelete(todo.id)}
-                        >
-                            {"削除ボタン"}
-                        </button>
+                        <div className={styles.area}>
+                            {/* 詳細 */}
+                            <div className={styles.areaParts}>
+                                <FontAwesomeIcon
+                                    icon={faFile}
+                                    size="lg"
+                                    onClick={() => handleTodoDelete(todo.id)}
+                                />
+                            </div>
+                            {/* 編集 */}
+                            <div className={styles.areaParts}>
+                                <FontAwesomeIcon
+                                    icon={faPenToSquare}
+                                    size="lg"
+                                    onClick={() => handleTodoDelete(todo.id)}
+                                />
+                            </div>
+                            {/* 削除 */}
+                            <div className={styles.areaParts}>
+                                <FontAwesomeIcon
+                                    icon={faTrashAlt}
+                                    size="lg"
+                                    onClick={() => handleTodoDelete(todo.id)}
+                                />
+                            </div>
+                        </div>
+
                     </li>
                 )
             })}

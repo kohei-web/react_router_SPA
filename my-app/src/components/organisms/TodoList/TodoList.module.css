@@ -1,5 +1,20 @@
+.area {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.areaParts {
+    display: block;
+    cursor: pointer;
+    color: orange;
+}
+
 .list {
     margin-top: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .list:first-child {
