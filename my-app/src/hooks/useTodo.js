@@ -19,17 +19,18 @@ import { initialTodoList, todoLength } from "../constants/data";
 
 export const useTodo = () => {
     // 表示todoListの状態管理
-    const [ todos, setTodos ] = useState(initialTodoList);
+    const [ todos, setTodos ] = useState(initialTodoList); /* グローバル */
     // todo_titleの追加テキストの状態管理 最初は空文字
-    const [ originalText, setOriginalText ] = useState("");
+    const [ originalText, setOriginalText ] = useState(""); /* 状態管理はローカル */
     // todo_contentの追加テキストの状態管理 最初は空文字
-    const [ originalTextContent, setOriginalTextContent ] = useState("");
+    const [ originalTextContent, setOriginalTextContent ] = useState(""); /* 状態管理はローカル */
     // idの状態管理
-    const [ todoIdLength, setTodoIdLength ] = useState(todoLength);
+    const [ todoIdLength, setTodoIdLength ] = useState(todoLength); /* グローバル */
     // 検索テキストの状態管理
     const [ searchText, setSearchText ] = useState("");
 
-    // todoList追加処理
+
+    // todoList追加処理はグローバルにする
     const addTodo = (todo) => {
         setTodos([...todos, todo]);
     };
@@ -63,6 +64,7 @@ export const useTodo = () => {
         }
     };
 
+    // これらのハンドラーはローカルで定義する
     // 入力されたtodo_title追加テキストの状態管理ハンドラ
     const handleSetOriginalText = (e) => setOriginalText(e.target.value);
     // 入力されたtodo_content追加テキストの状態管理ハンドラ
@@ -70,7 +72,7 @@ export const useTodo = () => {
     // 入力された検索テキストの状態管理ハンドラ
     const handleSetSearchText = (e) => setSearchText(e.target.value);
 
-    // todoList検索処理
+    // todoList検索処理はローカルで定義
     // フィルタリング後のtodoを返す
     // useMemoで同じ処理はスキップするようにする
     const showTodoList = useMemo(() => {
@@ -82,7 +84,7 @@ export const useTodo = () => {
         });
     }, [todos, searchText]);
 
-    // todoList削除処理
+    // todoList削除処理グローバルで定義
     const handleTodoDelete = (targetId) => {
         // 渡ってきたidの合致しないtodoListを作成
         const newTodos = todos.filter((todo => todo.id !== targetId));
@@ -91,6 +93,7 @@ export const useTodo = () => {
         setTodos(newTodos);
     };
 
+    // これらも半分以上は不要になる
     return {
         showTodoList,
         originalText,
